@@ -45,28 +45,31 @@ to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
 if __name__ == '__main__':
-    allIncoming = set()
-    totalFixedPhoneCalls = 0
-    fixedLineToFixedLine = 0
+    all_numbers_being_called = set() # store all of the fixed line and mobile called by (080)
+    total_fixed_phone_calls = 0
+    fixed_line_to_fixed_Line = 0
+
     for call in calls:
         incoming = str(call[0])
+        answering = str(call[1])
 
-        if incoming.startswith('('): # find area code for fixed line
-            allIncoming.add(incoming[incoming.find("(") + 1:incoming.rfind(")")])
-        elif incoming.startswith('7') or incoming.startswith('8') or incoming.startswith('9'): # mobile
-            allIncoming.add(incoming.split()[0])
-
-        # store number of fixed line to fixed line calls
         if incoming.startswith('(080)'):
-            totalFixedPhoneCalls += 1
+            # calculate number of fixed line to fixed line calls
+            total_fixed_phone_calls += 1
             if str(call[1]).startswith('(080)'):
-                fixedLineToFixedLine += 1
+                fixed_line_to_fixed_Line += 1
 
-    result = sorted(allIncoming)
+            if answering.startswith('('): # find area code for fixed line
+                all_numbers_being_called.add(answering[answering.find("(") + 1:answering.rfind(")")])
+            elif answering.startswith('7') or answering.startswith('8') or answering.startswith('9'): # find mobile numbers
+                all_numbers_being_called.add(answering.split()[0])
+
+
+    result = sorted(all_numbers_being_called)
 
     print("The numbers called by people in Bangalore have codes:")
     for number in result:
         print(number)
 
-    precentage = '{0:.2f}'.format(fixedLineToFixedLine/totalFixedPhoneCalls * 100)
+    precentage = '{0:.2f}'.format(fixed_line_to_fixed_Line/total_fixed_phone_calls * 100)
     print(str(precentage) + " percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")

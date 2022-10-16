@@ -24,5 +24,6 @@ Print messages:
 if __name__ == '__main__':
     first_record = texts[0]
     print("First record of texts, " + first_record[0] + " texts " + first_record[1] + " at time " + first_record[2])
+
     last_record = calls[-1]
     print("Last record of texts, " + last_record[0] + " calls " + last_record[1] + " at time " + last_record[2] + ", lasting " + last_record[3] + " seconds")

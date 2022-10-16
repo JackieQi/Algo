@@ -20,12 +20,24 @@ Print a message:
 """
 if __name__ == '__main__':
     number_lookup_table = set()
+
     for call in calls:
         # check incoming number
         if call[0] not in number_lookup_table:
             number_lookup_table.add(call[0])
+
         # check answering number
         if call[1] not in number_lookup_table:
             number_lookup_table.add(call[1])
+
+    # count distinct numbers in texts.csv
+    for text in texts:
+        # check incoming number
+        if text[0] not in number_lookup_table:
+            number_lookup_table.add(text[0])
+
+        # check answering number
+        if text[1] not in number_lookup_table:
+            number_lookup_table.add(text[1])
 
     print("There are " + str(number_lookup_table.__len__()) + " different telephone numbers in the records.")

@@ -6,6 +6,8 @@ O(n): Count all of the numbers once
 
 Task2:
 O(n): Count all of the numbers once
+Check all numbers in the dictionary once O(n)
+Overall O(n)
 
 Task3:
 Count all of the numbers once O(n)
@@ -13,6 +15,8 @@ Sort the end results O(nlogn)
 Overall O(nlogn)
 
 Task4:
-Count all of the numbers once O(n)
+Count all of the calls once O(n)
+Count all of the texts once O(n)
+Check each outgoing number against the sets O(n), but we use contains on each set which is O(logn), so it's O(nlogn)
 Sort the end results O(nlogn)
 Overall O(nlogn)

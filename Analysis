@@ -1,0 +1,18 @@
+Task0:
+O(1): Look for first and last record in the list takes constant time
+
+Task1:
+O(n): Count all of the numbers once
+
+Task2:
+O(n): Count all of the numbers once
+
+Task3:
+Count all of the numbers once O(n)
+Sort the end results O(nlogn)
+Overall O(nlogn)
+
+Task4:
+Count all of the numbers once O(n)
+Sort the end results O(nlogn)
+Overall O(nlogn)

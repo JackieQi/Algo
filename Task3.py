@@ -50,20 +50,21 @@ if __name__ == '__main__':
     fixed_line_to_fixed_Line = 0
 
     for call in calls:
-        incoming = str(call[0])
-        answering = str(call[1])
+        outgoing = str(call[0])
+        incoming = str(call[1])
 
-        if incoming.startswith('(080)'):
+        if outgoing.startswith('(080)'):
             # calculate number of fixed line to fixed line calls
             total_fixed_phone_calls += 1
-            if str(call[1]).startswith('(080)'):
+            if incoming.startswith('(080)'):
                 fixed_line_to_fixed_Line += 1
 
-            if answering.startswith('('): # find area code for fixed line
-                all_numbers_being_called.add(answering[answering.find("(") + 1:answering.rfind(")")])
-            elif answering.startswith('7') or answering.startswith('8') or answering.startswith('9'): # find mobile numbers
-                all_numbers_being_called.add(answering.split()[0])
-
+            if incoming.startswith('('): # find area code for fixed line
+                all_numbers_being_called.add(incoming[incoming.find("(") + 1:incoming.rfind(")")])
+            elif incoming.startswith('7') or incoming.startswith('8') \
+                 or incoming.startswith('9'):  # find mobile numbers
+                mobile_prefix = incoming.split()[0][:4]
+                all_numbers_being_called.add(mobile_prefix)
 
     result = sorted(all_numbers_being_called)
 
@@ -72,4 +73,6 @@ if __name__ == '__main__':
         print(number)
 
     precentage = '{0:.2f}'.format(fixed_line_to_fixed_Line/total_fixed_phone_calls * 100)
-    print(str(precentage) + " percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
+    print(str(precentage) + " percent of calls from fixed lines in Bangalore "
+          + "are calls to other fixed lines in Bangalore.")
+    
